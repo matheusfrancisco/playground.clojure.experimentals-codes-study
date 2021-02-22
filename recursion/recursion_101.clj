@@ -21,7 +21,21 @@
     (is (= 10 (length ls10)))))
 
 
+(defn map* [f ls]
+  (if (empty? ls)
+    ()
+    ;;divid and conquer
+    (cons
+      (f (first ls)) (map* f (rest ls)))))
+
+
+(deftest map-*
+  (testing "map *"
+    (is (= '() (map* inc [])))))
+
+(map* inc (range 2)) ;=> (1 2)
+(map* str (range 3)) ;=> ("0" "1" "2")
+
+
 (comment
-  (run-tests *ns*)
-  
-  )
+  (run-tests *ns*))
