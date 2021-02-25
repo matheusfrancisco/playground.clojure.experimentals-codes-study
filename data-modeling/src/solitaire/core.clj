@@ -13,3 +13,19 @@
 
 (card/numeric-value (card/make :spades :A))
 (card/numeric-value (card/make :spades :K))
+
+
+(defn transfer-fn
+  [count from to]
+  (fn [game]
+    (let [cards (take count (get-in game from))]
+      (-> game
+          (update-in from (partial drop count))
+          (update-in to into cards)))))
+
+(defn flip-fn [count from to]
+  (fn [game]
+    (let [cards (take count (get-in game from))]
+      (-> game
+          (update-in from (partial drop count))
+          (update-in to into (reverse cards))))))
