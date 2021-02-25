@@ -1,0 +1,5 @@
+{:deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/test.check {:mvn/version "1.0.0"}}
+ :paths ["src" "resources"]
+ :aliases {:dev {:extra-paths ["dev"]
+                 :extra-deps  {profit/profit {:mvn/version "0.1.0-SNAPSHOT"}}}}}
