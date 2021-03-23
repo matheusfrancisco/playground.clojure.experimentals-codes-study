@@ -1,0 +1,10 @@
+{:paths
+ ["src" "resources"]
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.3"}
+
+  ;; should add test.check to a dev specific dependency
+  org.clojure/test.check {:mvn/version "1.0.0"}}
+
+ }

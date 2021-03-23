@@ -1,1 +1,7 @@
-# A lot courses  and codes in clojure
+# A lot of code to learning more about clojure
+
+
+
+Reference:
+ - PurelyFunction.tv
+
