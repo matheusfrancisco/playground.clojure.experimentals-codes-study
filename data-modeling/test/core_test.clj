@@ -1,4 +1,4 @@
-(ns core-test
+(ns test.core-test
   (:require [clojure.test :refer :all]
             [solitaire.core :refer :all]
             [solitaire.card :as card]))

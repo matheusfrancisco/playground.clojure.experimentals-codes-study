@@ -1,4 +1,4 @@
-(ns xlabs.learning_specs
+(ns src.xlabs.learning_specs
   (:require [clojure.spec.alpha :as spec]))
 
 ;; Predicates
