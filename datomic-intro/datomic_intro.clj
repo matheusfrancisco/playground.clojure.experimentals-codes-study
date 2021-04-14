@@ -1,8 +1,16 @@
 (ns datomic-intro
   (:use [clojure.pprint])
-  (:require [datomic.api :as d]))
+  (:require [datomic.api :as d]
+            [db :as edb]
+            [model :as model]))
 
-(def db-uri "datomic:dev://localhost:4334/test-matheus")
-(pprint (d/create-database db-uri))
-(pprint (d/connect db-uri))
-(pprint (d/delete-database db-uri))
+(def conn (edb/open-connection))
+
+(d/transact conn edb/schema)
+
+(def computer (model/new-product
+                "Expensive Computer"
+                "/expensive_computer"
+                3500.10))
+
+(d/transact conn [computer])
