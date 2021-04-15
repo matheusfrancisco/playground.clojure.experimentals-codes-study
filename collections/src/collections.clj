@@ -10,3 +10,7 @@
 ;; all data structure in clojure has two property important (Immutable, Persistent)
 ;; to concurrent programming you won't want mutability
 
+
+;; interface/protocol
+;; how will we access information?
+;; constant time.
