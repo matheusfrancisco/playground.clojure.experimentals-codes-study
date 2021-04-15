@@ -8,3 +8,4 @@
 (assoc {} :a 1)
 
 ;=> {:a 1}
+;;stopped at 14 ep collections..
