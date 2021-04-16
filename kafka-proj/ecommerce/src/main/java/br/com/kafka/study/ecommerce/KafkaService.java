@@ -9,30 +9,25 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.UUID;
 
-public class FraudDetectorService {
-    public static void main(String[] args) {
-        var consumer = new KafkaConsumer<String, String>(properties());
-        consumer.subscribe(Collections.singletonList("ECOMMERCE_NEW_ORDER"));
+public class KafkaService {
+    private final KafkaConsumer<String, String> consumer;
+    private final ConsumerFunction parse;
+
+    public KafkaService(String topic, ConsumerFunction parse) {
+        this.parse = parse;
+        this.consumer = new KafkaConsumer<String, String>(properties());
+        consumer.subscribe(Collections.singletonList("ECOMMERCE_SEND_EMAIL"));
+    }
+
+    public void run() {
         while(true) {
             var records = consumer.poll(Duration.ofMillis(100));
             if(!records.isEmpty()) {
                 System.out.println("Found"+ records.count() + "registries");
                 for(var record: records) {
-                    System.out.println("Processing new order, checking for fraud");
-                    System.out.println(record.key());
-                    System.out.println(record.partition());
-                    System.out.println(record.partition());
-                    System.out.println(record.offset());
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println("Order processed");
-
+                    parse.consume(record);
                 }
             }
-
         }
     }
 
@@ -45,6 +40,6 @@ public class FraudDetectorService {
         properties.setProperty(ConsumerConfig.CLIENT_ID_CONFIG, FraudDetectorService.class.getSimpleName() + "-" + UUID.randomUUID().toString());
         properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "1");
         return properties;
-
     }
+
 }
