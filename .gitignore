@@ -2,3 +2,5 @@
 .DS_Store
 */*.iml
 test-check-playground
+kafka-proj/ecommerce/*/target/
+kafka-proj/ecommerce/target/

@@ -4,6 +4,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.math.BigDecimal;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class FraudDetectorService {
     public static void main(String[] args) {
@@ -18,7 +19,8 @@ public class FraudDetectorService {
         }
     }
 
-    private void parse(ConsumerRecord<String, Order> record) {
+    private final KafkaDispatcher<Order> orderDispatcher = new KafkaDispatcher<Order>();
+    private void parse(ConsumerRecord<String, Order> record) throws ExecutionException, InterruptedException {
         System.out.println("Processing new order, checking for fraud");
         System.out.println(record.key());
         System.out.println(record.value());
@@ -32,9 +34,12 @@ public class FraudDetectorService {
         var order = record.value();
         if(isFraud(order)) {
             //pretending that the fraud happens when the amount is >= 4500
-            System.out.println("Order is a fraud!!");
+            System.out.println("Order is a fraud!!" + order);
+            orderDispatcher.send("ECOMMERCE_ORDER_REJECTED", order.getUserId(), order);
         } else {
-            System.out.println("Approved");
+            System.out.println("Approved" + order);
+            orderDispatcher.send("ECOMMERCE_ORDER_APPROVED", order.getUserId(), order);
+
         }
         System.out.println("Order processed");
     }
