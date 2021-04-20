@@ -1,4 +1,4 @@
-package br.com.kafka.study.ecommerce;
+package br.com.study.kafka;
 
 import java.math.BigDecimal;
 
