@@ -1,4 +1,4 @@
-package br.com.study.kafka;
+package br.com.study.kafka.ecommerce.database;
 
 import java.math.BigDecimal;
 
@@ -11,5 +11,9 @@ public class Order {
         this.orderId = orderId;
         this.amount = amount;
         this.email = email;
+    }
+
+    public String getOrderId() {
+        return orderId;
     }
 }

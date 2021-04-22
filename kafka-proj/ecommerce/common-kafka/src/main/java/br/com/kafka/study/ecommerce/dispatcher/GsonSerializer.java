@@ -1,5 +1,7 @@
-package br.com.kafka.study.ecommerce;
+package br.com.kafka.study.ecommerce.dispatcher;
 
+import br.com.kafka.study.ecommerce.Message;
+import br.com.kafka.study.ecommerce.MessageAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.kafka.common.serialization.Serializer;

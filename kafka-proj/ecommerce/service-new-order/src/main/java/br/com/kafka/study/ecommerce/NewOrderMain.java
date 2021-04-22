@@ -1,5 +1,7 @@
 package br.com.kafka.study.ecommerce;
 
+import br.com.kafka.study.ecommerce.dispatcher.KafkaDispatcher;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -13,9 +15,8 @@ public class NewOrderMain {
                     var amount = new BigDecimal(Math.random() * 5000 + 1);
                     var email = Math.random() + "@email.com";
                     var order = new Order(orderId, amount, email);
-                    //orderDispatcher.send("ECOMMERCE_NEW_ORDER", email, order);
-                    var emailCode = "Thank you for your order! We're processing your order!";
-                    //emailDispatcher.send("ECOMMERCE_SEND_EMAIL", email, emailCode);
+                    var id = new CorrelationId(NewOrderMain.class.getSimpleName());
+                    orderDispatcher.send("ECOMMERCE_NEW_ORDER", email, id, order);
                 }
             }
         }

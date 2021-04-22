@@ -1,5 +1,8 @@
-package br.com.kafka.study.ecommerce;
+package br.com.kafka.study.ecommerce.consumer;
 
+import br.com.kafka.study.ecommerce.Message;
+import br.com.kafka.study.ecommerce.dispatcher.GsonSerializer;
+import br.com.kafka.study.ecommerce.dispatcher.KafkaDispatcher;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -67,6 +70,9 @@ public class KafkaService<T> implements Closeable {
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         properties.setProperty(ConsumerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString());
         properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "1");
+        //earliest
+        //latest
+        properties.setProperty(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
         properties.putAll(overrideProperties);
         return properties;
     }

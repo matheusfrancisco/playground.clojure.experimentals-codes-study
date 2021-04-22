@@ -1,4 +1,4 @@
-package br.com.study.kafka;
+package br.com.study.kafka.ecommerce.database;
 
 public class User {
     private final String uuid;

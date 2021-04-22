@@ -1,5 +1,7 @@
-package br.com.kafka.study.ecommerce;
+package br.com.kafka.study.ecommerce.dispatcher;
 
+import br.com.kafka.study.ecommerce.CorrelationId;
+import br.com.kafka.study.ecommerce.Message;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 
@@ -30,7 +32,7 @@ public class KafkaDispatcher<T> implements Closeable {
     }
 
     public Future<RecordMetadata> sendAsync(String topic, String key, CorrelationId id, T payload) throws InterruptedException, ExecutionException {
-        var value = new Message<>(id, payload);
+        var value = new Message<>(id.continueWith("_" + topic), payload);
         var record = new ProducerRecord<>(topic, key, value);
         Callback callback = (data, ex) -> {
             if (ex != null) {

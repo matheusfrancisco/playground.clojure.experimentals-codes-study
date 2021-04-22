@@ -1,17 +1,14 @@
-package br.com.study.kafka;
+package br.com.study.kafka.ecommerce.database;
 
 
 import br.com.kafka.study.ecommerce.CorrelationId;
-import br.com.kafka.study.ecommerce.KafkaDispatcher;
+import br.com.kafka.study.ecommerce.dispatcher.KafkaDispatcher;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class GenerateAllReportServlet extends HttpServlet {

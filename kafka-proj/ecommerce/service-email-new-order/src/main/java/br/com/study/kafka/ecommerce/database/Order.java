@@ -1,4 +1,4 @@
-package br.com.kafka.study.ecommerce;
+package br.com.study.kafka.ecommerce.database;
 
 import java.math.BigDecimal;
 
@@ -28,9 +28,5 @@ public class Order {
                 ", amount=" + amount +
                 ", email='" + email + '\'' +
                 '}';
-    }
-
-    public String getOrderId() {
-        return orderId;
     }
 }
