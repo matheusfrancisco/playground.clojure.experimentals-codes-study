@@ -1,0 +1,6 @@
+Monthly report
+
+Basic Information
+read wip backlog
+ddd  tdd clea architecture
+=========================================

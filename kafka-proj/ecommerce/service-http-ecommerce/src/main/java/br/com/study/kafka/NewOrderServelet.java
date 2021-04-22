@@ -1,6 +1,7 @@
 package br.com.study.kafka;
 
 
+import br.com.kafka.study.ecommerce.CorrelationId;
 import br.com.kafka.study.ecommerce.KafkaDispatcher;
 
 import javax.servlet.ServletConfig;
@@ -30,15 +31,21 @@ public class NewOrderServelet extends HttpServlet {
             // we're not caring about any security issues, we are only
             // showing how to use http as a starting point
             var email = req.getParameter("email");
-
-            var orderId = UUID.randomUUID().toString();
             var amount = new BigDecimal(req.getParameter("amount"));
 
+            var orderId = UUID.randomUUID().toString();
+
             var order = new Order(orderId, amount, email);
-            orderDispatcher.send("ECOMMERCE_NEW_ORDER", email, order);
-            var emailCode = "Thank you for your order! We're processing your order!";
-            emailDispatcher.send("ECOMMERCE_SEND_EMAIL", email, emailCode);
-            System.out.println("New order sent successfully");
+            orderDispatcher.send("ECOMMERCE_NEW_ORDER", email,
+                    new CorrelationId(NewOrderServelet.class.getSimpleName()),
+                    order);
+
+            var emailCode = "Thank you for your order! We are processing your order!";
+            emailDispatcher.send("ECOMMERCE_SEND_EMAIL", email,
+                    new CorrelationId(NewOrderServelet.class.getSimpleName()),
+                    emailCode);
+
+            System.out.println("New order sent successfully.");
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.getWriter().println("New order sent");
         } catch (ExecutionException e) {
