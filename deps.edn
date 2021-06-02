@@ -2,8 +2,10 @@
    {"my.datomic.com" {:url "https://my.datomic.com/repo"}}
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         org.clojure/test.check {:mvn/version "1.0.0"}
-        com.datomic/datomic-pro {:mvn/version "1.0.6202"}}
- :paths ["src" "resources" "recursion" "specs-learning"
+        com.datomic/datomic-pro {:mvn/version "1.0.6202"}
+        nrepl {:mvn/version "0.7.0"}
+        cider/cider-nrepl {:mvn/version "0.25.2"}}
+ :paths ["src" "resources" "recursion" "specs-learning" "reduce-playground"
          "destructoring" "data-modeling" "combinators" "collections/src"
          "clj-intro" "beginning-property-based-testing" "datomic-intro"]
 
