@@ -1,0 +1,5 @@
+/Users/matheus.machado/m/clojure-codes-xlabs/kafka-proj/ecommerce/common-kafka/src/main/java/br/com/kafka/study/ecommerce/KafkaDispatcher.java
+/Users/matheus.machado/m/clojure-codes-xlabs/kafka-proj/ecommerce/common-kafka/src/main/java/br/com/kafka/study/ecommerce/KafkaService.java
+/Users/matheus.machado/m/clojure-codes-xlabs/kafka-proj/ecommerce/common-kafka/src/main/java/br/com/kafka/study/ecommerce/GsonDeserializer.java
+/Users/matheus.machado/m/clojure-codes-xlabs/kafka-proj/ecommerce/common-kafka/src/main/java/br/com/kafka/study/ecommerce/GsonSerializer.java
+/Users/matheus.machado/m/clojure-codes-xlabs/kafka-proj/ecommerce/common-kafka/src/main/java/br/com/kafka/study/ecommerce/ConsumerFunction.java

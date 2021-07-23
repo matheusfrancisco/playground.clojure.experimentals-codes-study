@@ -1,4 +1,4 @@
-(ns ds.core)
+(ns src.ds.core)
 
 ;;parameters
 (defn f [a b c d]

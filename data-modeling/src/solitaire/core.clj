@@ -1,4 +1,4 @@
-(ns solitaire.core
+(ns src.solitaire.core
   (:require [solitaire.card :as card]))
 
 
